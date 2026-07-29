@@ -1,45 +1,41 @@
-# 🎯 ML Recommender Systems
+# 🎯 Recommender Systems — Hybrid Engine
 
-[![CI/CD](https://github.com/twomathematicians-code/ml-recommender-systems/actions/workflows/ci.yml/badge.svg)](https://github.com/twomathematicians-code/ml-recommender-systems/actions)
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)](https://hub.docker.com/)
-[![FAISS](https://img.shields.io/badge/FAISS-Vector_Search-00BFFF)](https://github.com/facebookresearch/faiss)
+<p>
+  <img src="https://img.shields.io/badge/FAISS-Vector_Search-2196F3" />
+  <img src="https://img.shields.io/badge/Scipy-SVD_Optimization-7B1FA2" />
+  <img src="https://img.shields.io/badge/FastAPI-Production-009688" />
+  <img src="https://img.shields.io/badge/AB_Testing-Built_In-FF9800" />
+</p>
 
-**Production recommendation engine with collaborative filtering, content-based, and hybrid approaches — FAISS-powered vector search for real-time recommendations at scale.**
+A production recommender supporting collaborative filtering, content-based, and hybrid approaches with A/B testing baked in.
 
----
-
-## 🎯 Recommendation Modules
-
-| Module | Algorithm | Use Case |
-|---|---|---|
-| **Collaborative Filtering** | Matrix Factorization (SVD) | User-item interactions |
-| **Content-Based** | TF-IDF + Cosine Similarity | Item metadata matching |
-| **Hybrid Recommender** | Ensemble + FAISS Index | Best of both worlds |
-| **Vector Search** | FAISS + Embeddings | Real-time similar items |
-
----
-
-## 🚀 Quick Start
+## Run It
 
 ```bash
-git clone https://github.com/twomathematicians-code/ml-recommender-systems.git
-cd ml-recommender-systems
-docker-compose up --build
+docker compose up -d
+```
+
+## What's Different Here
+
+| Strategy | How It Works |
+|:--|:--|
+| `collaborative` | User-item matrix factorization via SVD |
+| `content` | Item similarity via TF-IDF + cosine |
+| `hybrid` | Blended scores from both |
+| `popular` | Global trending with recency decay |
+| `personalized` | User embedding + context features |
+
+## API
+
+```bash
+# Get recommendations
+curl -X POST http://localhost:8000/api/v1/recommend/user \
+  -d '{"user_id": "U-42", "n_recommendations": 5, "strategy": "hybrid"}'
+
+# A/B test two strategies
+curl -X POST http://localhost:8000/api/v1/experiments/ab-test?strategy_a=collaborative&strategy_b=content
 ```
 
 ---
 
-## 🔌 API Endpoints
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/api/v1/recommend/user` | User-based recommendations |
-| `POST` | `/api/v1/recommend/item` | Similar items |
-| `POST` | `/api/v1/recommend/hybrid` | Hybrid recommendations |
-| `GET` | `/api/v1/health` | Health check |
-
----
-
-## 👤 Author
-
-**Mahesh Solanki** — [LinkedIn](https://linkedin.com/in/maheshsolanki-16b9a6a5) | [GitHub](https://github.com/twomathematicians-code)
+<p><i>Mahesh Solanki</i> · <a href="https://github.com/twomathematicians-code">GitHub</a></p>

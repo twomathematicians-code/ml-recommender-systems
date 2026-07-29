@@ -1,11 +1,3 @@
-import logging, sys
-
-def setup_logging(level: str = "INFO") -> None:
-    logging.basicConfig(
-        level=getattr(logging, level),
-        format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
-        handlers=[logging.StreamHandler(sys.stdout)]
-    )
-
-def get_logger(name: str) -> logging.Logger:
-    return logging.getLogger(name)
+import logging
+logger = logging.getLogger("recsys")
+logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")

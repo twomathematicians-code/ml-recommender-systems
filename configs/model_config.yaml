@@ -1,5 +1,20 @@
-model:
-  random_state: 42
-  test_size: 0.2
-  cv_folds: 5
-  threshold: 0.5
+# Recommender System Config
+strategies:
+  collaborative:
+    n_factors: 50
+    regularization: 0.02
+    iterations: 20
+  content:
+    vectorizer: tfidf
+    similarity: cosine
+  hybrid:
+    collaborative_weight: 0.6
+    content_weight: 0.4
+
+ab_testing:
+  min_sample_size: 1000
+  confidence_threshold: 0.95
+
+cache:
+  ttl_seconds: 300
+  max_users: 10000
