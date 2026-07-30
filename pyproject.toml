@@ -1,4 +1,5 @@
 [tool.poetry]
+packages = [{include = "src"}]
 name = "recommender-systems"
 version = "1.0.0"
 description = "Hybrid recommender engine: collaborative filtering, content-based, FAISS vector search, and A/B testing framework."
